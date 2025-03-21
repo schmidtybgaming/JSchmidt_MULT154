@@ -32,5 +32,6 @@ public class SpawnManager : NetworkBehaviour
             lilyPadObject.Spawn();
         }
         
+        
     }
 }

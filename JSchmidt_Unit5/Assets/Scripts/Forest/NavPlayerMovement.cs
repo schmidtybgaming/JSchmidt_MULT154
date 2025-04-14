@@ -13,8 +13,12 @@ public class NavPlayerMovement : MonoBehaviour
     private float translationValue = 0;
     private float rotateValue = 0;
     private Animator animator;
-    private bool dead = false;
+    public bool dead = false;
     private bool onAlert = false;
+    public GameObject lookTarget;
+    private Coroutine smoothLookCoroutine;
+    private GameObject currHazard;
+    
     
 
     private void Start()
@@ -40,7 +44,7 @@ public class NavPlayerMovement : MonoBehaviour
         translationValue = translation;
         rotateValue = rotation;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && HivePickUp.pickedUp && !HivePickUp.dropped)
         {
             DroppedHive.Invoke(transform.position);
         }
@@ -60,8 +64,18 @@ public class NavPlayerMovement : MonoBehaviour
         
         // simply moves the player by however much the player is pressing with respect
         // to the speed parameter. Does not affect gravity.
+        
         Vector3 move = transform.forward * translationValue;
+        if (translationValue < 0)
+        {
+            move = Vector3.zero;
+        }
+        
+        
         playerRb.velocity = new Vector3(move.x * speed, playerRb.velocity.y, move.z * speed);
+        
+        
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -77,8 +91,21 @@ public class NavPlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Hazard"))
         {
+            if (smoothLookCoroutine != null )
+            {
+                StopCoroutine(smoothLookCoroutine);
+            }
+            
+
             onAlert = true;
             animator.SetBool("EarMove", onAlert);
+
+            if (currHazard == null)
+            {
+                currHazard = other.gameObject;
+            }
+                lookTarget.transform.position = Vector3.Lerp(lookTarget.transform.position, currHazard.transform.position, 0.1f);
+            
         }
     }
 
@@ -86,8 +113,23 @@ public class NavPlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Hazard"))
         {
+            currHazard = null;
+            smoothLookCoroutine = StartCoroutine("SmoothLookForward");
             onAlert = false;
             animator.SetBool("EarMove", onAlert);
         }
+    }
+
+    IEnumerator SmoothLookForward()
+    {
+        Vector3 targetPosition = transform.position + transform.forward * 6;
+        while (Vector3.Distance(lookTarget.transform.position, targetPosition) > 0.1f)
+        {
+            targetPosition = transform.position + transform.forward * 6;
+            lookTarget.transform.position = Vector3.Lerp(lookTarget.transform.position, targetPosition, 0.1f);
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        lookTarget.transform.position = targetPosition;
     }
 }

@@ -39,10 +39,17 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Wave1speed: 3
+    - _Wave1Frequency: 5
+    - _Wave1Height: 1
+    - _Wave1speed: 1
+    - _Wave2Frequency: 6
+    - _Wave2Height: 1
+    - _Wave2Speed: 5
     - _WaveFrequency: 1
     - _WaveHeight: 0.5
-    m_Colors: []
+    m_Colors:
+    - _Wave1Angle: {r: 1, g: 1, b: 0, a: 0}
+    - _Wave2Angle: {r: 3, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7191551930871485877
 MonoBehaviour:

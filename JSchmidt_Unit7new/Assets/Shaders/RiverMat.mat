@@ -40,6 +40,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Wave1speed: 3
+    - _WaveFrequency: 1
+    - _WaveHeight: 0.5
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &7191551930871485877

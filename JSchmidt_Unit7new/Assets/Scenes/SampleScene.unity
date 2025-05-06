@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 01f4eb1c73693428d923f1520032e7f9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -778,6 +778,7 @@ GameObject:
   - component: {fileID: 566869885}
   - component: {fileID: 566869884}
   - component: {fileID: 566869883}
+  - component: {fileID: 566869887}
   m_Layer: 0
   m_Name: RiverWater
   m_TagString: Untagged
@@ -866,12 +867,24 @@ Transform:
   m_GameObject: {fileID: 566869882}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.2, y: 13.39, z: 2.7}
+  m_LocalPosition: {x: 14.2, y: 13.15, z: 2.7}
   m_LocalScale: {x: 3, y: 1, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &566869887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566869882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e7336b94e5b554680fa9dd5cf9855c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617321939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,12 +1135,12 @@ GameObject:
   - component: {fileID: 734918990}
   - component: {fileID: 734918989}
   m_Layer: 0
-  m_Name: Water
+  m_Name: RiverGround
   m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &734918989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1208,7 +1221,7 @@ Transform:
   m_GameObject: {fileID: 734918988}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.33, y: 13.66, z: 3.17}
+  m_LocalPosition: {x: 14.33, y: 11.77, z: 3.17}
   m_LocalScale: {x: 30.26564, y: 1, z: 11.609055}
   m_ConstrainProportionsScale: 0
   m_Children: []
